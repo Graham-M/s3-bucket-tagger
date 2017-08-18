@@ -61,7 +61,8 @@ resource "aws_iam_role_policy" "s3_bucket_tagger_policy" {
       "Action": [
         "logs:CreateLogGroup",
         "logs:CreateLogStream",
-        "logs:PutLogEvents"
+        "logs:PutLogEvents",
+        "logs:PutRetentionPolicy"
       ],
       "Effect": "Allow",
       "Resource": "*"

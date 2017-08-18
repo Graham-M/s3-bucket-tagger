@@ -18,6 +18,10 @@ def lambda_handler(event, context):
         	print('Getting current tags: ' + bucket['Name'])
        		current_tagging = s3.get_bucket_tagging(Bucket=bucket['Name'])['TagSet']
 
+                if len(current_tagging) >= 50:
+                    print('Tag limit met, not adding new tags: ' + bucket['Name'])
+                    continue
+
     	        if not any(d['Key'] == 'bucket_name' for d in current_tagging):
                     current_tagging.append(
                         {
